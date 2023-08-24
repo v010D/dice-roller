@@ -1,0 +1,48 @@
+/* Add this to a <style> tag or a separate CSS file */
+body {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.box {
+    width: calc(25% - 20px);
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: none;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+
+.result {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 10px;
+    border: 3px black;
+}
+
+.button-container {
+    align-self: flex-end;
+    /* Align the button to the bottom */
+}
