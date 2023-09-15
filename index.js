@@ -54,6 +54,13 @@ const resultElement20 = document.getElementById('result20');
 const staticNum20 = document.getElementById('staticNum20'); // Get the static number input element
 const clearButton20 = document.getElementById('clearButton20');
 
+const rollButtonCustom = document.getElementById('rollButtonCustom');
+const resultElementCustom = document.getElementById('resultCustom');
+const numSidesCustom = document.getElementById('numSidesCustom');
+const numDiceCustom = document.getElementById('numDiceCustom');
+const staticNumCustom = document.getElementById('staticNumCustom');
+const clearButtonCustom = document.getElementById('clearButtonCustom');
+
 // Event listeners to handle button clicks
 
 rollButton4.addEventListener('click', () => {
@@ -138,4 +145,17 @@ rollButton20.addEventListener('click', () => {
 
 clearButton20.addEventListener('click', () => {
     resultElement20.textContent = 'Total:';
+});
+
+rollButtonCustom.addEventListener('click', () => {
+    const numSides = parseInt(numSidesCustom.value);
+    const numDice = parseInt(numDiceCustom.value);
+    const rollResults = rollMultipleDice(numSides, numDice);
+    const staticNumber = staticNumCustom.value === '' ? 0 : parseInt(staticNumCustom.value);
+    const totalRoll = rollResults.reduce((total, roll) => total + roll, 0) + staticNumber;
+    resultElementCustom.textContent = `Total: ${totalRoll}`;
+});
+
+clearButtonCustom.addEventListener('click', () => {
+    resultElementCustom.textContent = 'Total:';
 });
