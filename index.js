@@ -13,6 +13,10 @@ function rollMultipleDice(dice, numDice) {
     return results;
 }
 
+const rollHistoryList = document.getElementById('rollHistoryList');
+const maxRollHistory = 20;
+let rollHistory = [];
+
 /* Referencing to HTML to get the interactivity
 rollButton# is the button user presses
 resultElement# displays the result of a roll 
@@ -69,6 +73,7 @@ rollButton4.addEventListener('click', () => {
     const staticNumber = staticNum4.value === '' ? 0 : parseInt(staticNum4.value);
     const totalRoll4 = rollResults4.reduce((total, roll) => total + roll, 0) + staticNumber;
     resultElement4.textContent = `Total: ${totalRoll4}`;
+    updateRollHistory('D4', rollResults4, staticNumber, totalRoll4);
 });
 
 clearButton4.addEventListener('click', () => {
@@ -81,6 +86,7 @@ rollButton6.addEventListener('click', () => {
     const staticNumber = staticNum6.value === '' ? 0 : parseInt(staticNum6.value);
     const totalRoll6 = rollResults6.reduce((total, roll) => total + roll, 0) + staticNumber;
     resultElement6.textContent = `Total: ${totalRoll6}`;
+    updateRollHistory('D6', rollResults6, staticNumber, totalRoll6);
 });
 
 clearButton6.addEventListener('click', () => {
@@ -93,6 +99,7 @@ rollButton8.addEventListener('click', () => {
     const staticNumber = staticNum8.value === '' ? 0 : parseInt(staticNum8.value);
     const totalRoll8 = rollResults8.reduce((total, roll) => total + roll, 0) + staticNumber;
     resultElement8.textContent = `Total: ${totalRoll8}`;
+    updateRollHistory('D8', rollResults8, staticNumber, totalRoll8);
 });
 
 clearButton8.addEventListener('click', () => {
@@ -105,6 +112,7 @@ rollButton10.addEventListener('click', () => {
     const staticNumber = staticNum10.value === '' ? 0 : parseInt(staticNum10.value); // Get the static number from the input
     const totalRoll10 = rollResults10.reduce((total, roll) => total + roll, 0) + staticNumber;
     resultElement10.textContent = `Total: ${totalRoll10}`;
+    updateRollHistory('D10', rollResults10, staticNumber, totalRoll10);
 });
 
 clearButton10.addEventListener('click', () => {
@@ -117,6 +125,7 @@ rollButton100.addEventListener('click', () => {
     const staticNumber = staticNum100.value === '' ? 0 : parseInt(staticNum100.value); // Get the static number from the input
     const totalRoll100 = rollResults100.reduce((total, roll) => total + roll, 0) + staticNumber;
     resultElement100.textContent = `Total: ${totalRoll100}`;
+    updateRollHistory('D100', rollResults100, staticNumber, totalRoll100);
 });
 
 clearButton100.addEventListener('click', () => {
@@ -129,6 +138,7 @@ rollButton12.addEventListener('click', () => {
     const staticNumber = staticNum12.value === '' ? 0 : parseInt(staticNum12.value); // Get the static number from the input
     const totalRoll12 = rollResults12.reduce((total, roll) => total + roll, 0) + staticNumber;
     resultElement12.textContent = `Total: ${totalRoll12}`;
+    updateRollHistory('D12', rollResults12, staticNumber, totalRoll12);
 });
 
 clearButton12.addEventListener('click', () => {
@@ -141,6 +151,7 @@ rollButton20.addEventListener('click', () => {
     const staticNumber = staticNum20.value === '' ? 0 : parseInt(staticNum20.value); // Get the static number from the input
     const totalRoll20 = rollResults20.reduce((total, roll) => total + roll, 0) + staticNumber;
     resultElement20.textContent = `Total: ${totalRoll20}`;
+    updateRollHistory('D20', rollResults20, staticNumber, totalRoll20);
 });
 
 clearButton20.addEventListener('click', () => {
@@ -159,3 +170,17 @@ rollButtonCustom.addEventListener('click', () => {
 clearButtonCustom.addEventListener('click', () => {
     resultElementCustom.textContent = 'Total:';
 });
+
+function updateRollHistory(diceType, rollResults, staticNumber, totalRoll) {
+    const rollString = rollResults.join(', ');
+    const historyItem = `${diceType} rolls: [${rollString}] + ${staticNumber} = ${totalRoll}`;
+
+    if (rollHistory.length === maxRollHistory) {
+        rollHistory.shift(); // Remove the oldest entry
+    }
+
+    rollHistory.push(historyItem);
+
+    // Update the roll history displayed in the HTML
+    rollHistoryList.innerHTML = rollHistory.map(item => `<li>${item}</li>`).join('');
+}
