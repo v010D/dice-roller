@@ -83,7 +83,9 @@ function rollCustom() {
     const staticNumber = staticNumCustom.value === '' ? 0 : parseInt(staticNumCustom.value);
     const totalRoll = rollResults.reduce((total, roll) => total + roll, 0) + staticNumber;
     resultElementCustom.textContent = `Total: ${totalRoll}`;
+    updateRollHistory(`Custom ${numSides}-sided`, rollResults, staticNumber, totalRoll);
 }
+
 
 const rollHistoryList = document.getElementById('rollHistoryList');
 const maxRollHistory = 20;
@@ -188,7 +190,11 @@ multiRollButton.addEventListener('click', () => {
 
     // Roll each selected dice
     selectedDice.forEach(diceType => {
-        rollDice(diceType);
+        if (diceType === 'custom') {
+            rollCustom();
+        } else {
+            rollDice(diceType);
+        }
     });
 });
 
@@ -198,7 +204,7 @@ function getSelectedDiceTypes() {
 
     checkboxes.forEach(checkbox => {
         if (checkbox.checked) {
-            const diceType = parseInt(checkbox.getAttribute('data-dice-type'));
+            const diceType = checkbox.getAttribute('data-dice-type');
             selectedDice.push(diceType);
         }
     });
