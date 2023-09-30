@@ -10,9 +10,10 @@
 </head>
 
 <body>
-
+<div class="box-container">
     <div class="box">
         <h1>Roll a d4</h1>
+        <input type="checkbox" id="checkboxD4" data-dice-type="4">
         <label for="numDice4">Number of dice:</label>
         <input type="number" id="numDice4" value="1" min="1" max="100">
         <label for="staticNum4">Modifier:</label>
@@ -27,6 +28,7 @@
 
     <div class="box">
         <h1>Roll a d6</h1>
+        <input type="checkbox" id="checkboxD6" data-dice-type="6">
         <label for="numDice6">Number of dice:</label>
         <input type="number" id="numDice6" value="1" min="1" max="100">
         <label for="staticNum6">Modifier:</label>
@@ -40,6 +42,7 @@
 
     <div class="box">
         <h1>Roll a d8</h1>
+        <input type="checkbox" id="checkboxD8" data-dice-type="8">
         <label for="numDice8">Number of dice:</label>
         <input type="number" id="numDice8" value="1" min="1" max="100">
         <label for="staticNum8">Modifier:</label>
@@ -53,6 +56,7 @@
 
     <div class="box">
         <h1>Roll a d10</h1>
+        <input type="checkbox" id="checkboxD10" data-dice-type="10">
         <label for="numDice10">Number of dice:</label>
         <input type="number" id="numDice10" value="1" min="1" max="100">
         <label for="staticNum10">Modifier:</label>
@@ -66,6 +70,7 @@
 
     <div class="box">
         <h1>Roll a d100</h1>
+        <input type="checkbox" id="checkboxD100" data-dice-type="100">
         <label for="numDice100">Number of dice:</label>
         <input type="number" id="numDice100" value="1" min="1" max="100">
         <label for="staticNum100">Modifier:</label>
@@ -79,6 +84,7 @@
 
     <div class="box">
         <h1>Roll a d12</h1>
+        <input type="checkbox" id="checkboxD12" data-dice-type="12">
         <label for="numDice12">Number of dice:</label>
         <input type="number" id="numDice12" value="1" min="1" max="100">
         <label for="staticNum12">Modifier:</label>
@@ -92,6 +98,7 @@
 
     <div class="box">
         <h1>Roll a d20</h1>
+        <input type="checkbox" id="checkboxD20" data-dice-type="20">
         <label for="numDice20">Number of dice:</label>
         <input type="number" id="numDice20" value="1" min="1" max="100">
         <label for="staticNum20">Modifier:</label>
@@ -105,6 +112,7 @@
 
     <div class="box">
         <h1>Custom Die</h1>
+        <input type="checkbox" name="diceCheckbox" id="customDieCheckbox" data-dice-type="custom">
         <label for="numSidesCustom">Number of sides:</label>
         <input type="number" id="numSidesCustom" value="6" min="2" max="100">
         <label for="numDiceCustom">Number of dice:</label>
@@ -117,13 +125,15 @@
         <button type="button" id="clearButtonCustom" class="clear-button">Clear</button>
         <br>
     </div>
+    </div>
+
+    <button type="button" id="multiRollButton">Multi Roll</button>
+    <br>
 
     <div id="history" class="output-box">
         <h2>Roll History</h2>
         <ul id="rollHistoryList"></ul>
     </div>
-
-
 </body>
 
 </html>
